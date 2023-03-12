@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:math';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => AppState(),
       child: MaterialApp(
-        title: 'Namer App',
+        title: 'Game of Risk',
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
@@ -163,10 +164,11 @@ class Window extends StatelessWidget {
     }
 
     int height = 50;
-    if (Platform.isIOS) {
-      height = 90;
+    if (!kIsWeb) {
+      if (Platform.isIOS) {
+        height = 90;
+      }
     }
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
