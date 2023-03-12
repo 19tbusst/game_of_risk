@@ -1,7 +1,7 @@
+import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -162,6 +162,11 @@ class Window extends StatelessWidget {
       }
     }
 
+    int height = 50;
+    if (Platform.isIOS) {
+      height = 90;
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -188,7 +193,7 @@ class Window extends StatelessWidget {
           shape: const CircularNotchedRectangle(),
           notchMargin: 6,
           clipBehavior: Clip.antiAlias,
-          height: 60,
+          height: height.toDouble(),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -274,13 +279,10 @@ class Scores extends StatelessWidget {
         ),
         Column(
           children: [
-            Transform.translate(
-              offset: Offset(-6, 0),
-              child: Icon(
-                FontAwesomeIcons.piggyBank,
-                color: theme.colorScheme.primary,
-                size: 45,
-              ),
+            Icon(
+              Icons.monetization_on,
+              color: theme.colorScheme.primary,
+              size: 45,
             ),
             Text(
               appState.bank.toString(),
