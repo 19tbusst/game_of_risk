@@ -126,7 +126,7 @@ class Window extends StatelessWidget {
         if (roll == 1) {
           appState.message = "Rolled a 1";
         } else {
-          appState.message = "Rolled a 5";
+          appState.message = "Rolled a 6";
         }
 
         appState.roll = 0;
